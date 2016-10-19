@@ -3,3 +3,4 @@ Pagine PHP + librerie per creare un progetto .SB2 con mappe individuate dinamica
 
 TODO: sistemare la funzione getCentralTileCoordinatesTN (in web\utils.php)
 TODO: provare a ripulire completamente il folder temporaneo dolo il download del .SB2
+TODO: per ora rename a .png anche se sono .jpg
