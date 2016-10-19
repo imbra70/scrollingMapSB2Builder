@@ -1,0 +1,85 @@
+{
+	"objName": "Stage",
+	"variables": [{
+			"name": "posizione Y aereo",
+			"value": 0,
+			"isPersistent": false
+		},
+		{
+			"name": "i",
+			"value": 3,
+			"isPersistent": false
+		},
+		{
+			"name": "j",
+			"value": 4,
+			"isPersistent": false
+		}],
+	"sounds": [{
+			"soundName": "pop",
+			"soundID": 0,
+			"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+			"sampleCount": 258,
+			"rate": 11025,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "sfondo1",
+			"baseLayerID": 1,
+			"baseLayerMD5": "739b5e2a2435f6e1ec2993791b423146.png",
+			"bitmapResolution": 1,
+			"rotationCenterX": 240,
+			"rotationCenterY": 180
+		}],
+	"currentCostumeIndex": 0,
+	"penLayerMD5": "5c81a336fab8be57adc039a8a2b33ca9.png",
+	"penLayerID": 0,
+	"tempoBPM": 60,
+	"videoAlpha": 0.5,
+	"children": [{
+			"objName": "mappa",
+			"variables": [{
+					"name": "mia x",
+					"value": 256,
+					"isPersistent": false
+				},
+				{
+					"name": "mia y",
+					"value": 768,
+					"isPersistent": false
+				}],
+			"scripts": [[10,
+					10,
+					[["whenGreenFlag"],
+						["hide"],
+						["setVar:to:", "i", 0],
+						["doRepeat",
+							3,
+							[["changeVar:by:", "i", 1],
+								["setVar:to:", "j", 0],
+								["doRepeat", NUM_TILES_Y, [["changeVar:by:", "j", 1], ["createCloneOf", "_myself_"], ["wait:elapsed:from:", 0.1]]]]]]],
+				[10,
+					289,
+					[["whenCloned"],
+						["lookLike:", ["concatenate:with:", ["readVariable", "i"], ["concatenate:with:", "_", ["readVariable", "j"]]]],
+						["setVar:to:", "mia x", ["*", ["-", ["readVariable", "i"], 2], 256]],
+						["setVar:to:", "mia y", ["*", ["-", ["readVariable", "j"], 2], 256]],
+						["gotoX:y:", ["readVariable", "mia x"], ["readVariable", "mia y"]],
+						["goBackByLayers:", 3],
+						["show"],
+						["doForever",
+							[["ypos:", ["-", ["readVariable", "mia y"], ["readVariable", "posizione Y aereo"]]],
+								["doIfElse",
+									[">", ["computeFunction:of:", "abs", ["-", ["readVariable", "mia y"], ["readVariable", "posizione Y aereo"]]], "308"],
+									[["hide"]],
+									[["show"]]]]]]],
+				[444, 547, [["+", ["\/", 256, 2], 180]]]],
+			"sounds": [{
+					"soundName": "pop",
+					"soundID": 0,
+					"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+					"sampleCount": 258,
+					"rate": 11025,
+					"format": ""
+				}],
+			"costumes": [
